@@ -26,13 +26,13 @@ std::string red_left_sawp(bool calibrate, mik::auto_variation var, bool get_name
     assembly.tongue.close();
     wait(150, msec);
     assembly.locking.open();
-    wait(700, msec);
+    wait(800, msec);
     chassis.wait();
 
     // drive out of goal
     chassis.drive_distance(10, {.max_voltage = 12, .timeout = 600, .wait = false });
-    assembly.locking.close();
     chassis.wait();
+    assembly.locking.close();
     chassis.turn_to_angle(45, {.timeout = 700});
 
     // drive to set of three blocks and intake them
