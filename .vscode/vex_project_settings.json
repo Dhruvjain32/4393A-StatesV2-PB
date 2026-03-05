@@ -1,0 +1,18 @@
+{
+	"project": {
+		"name": "4393A-Statesv2-PB",
+		"slot": 1,
+		"description": "mikLib-v2.0             Press X to hide auton selector",
+		"platform": "V5",
+		"creationDate": "Mon, 02 Mar 2026 17:12:13 GMT",
+		"language": "cpp",
+		"sdkVersion": "V5_20240802_15_00_00",
+		"cpp": {
+			"includePath": []
+		}
+	},
+	"extension": {
+		"version": "0.8.2026020401",
+		"json": 1
+	}
+}
