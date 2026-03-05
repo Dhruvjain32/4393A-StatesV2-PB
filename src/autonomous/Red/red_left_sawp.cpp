@@ -72,9 +72,8 @@ std::string red_left_sawp(bool calibrate, mik::auto_variation var, bool get_name
     chassis.drive_to_point(-63.5, 47.5, {.wait = false, .max_voltage = 7, .timeout = 1500});
 
     assembly.locking.close();
-    wait(150, msec);
     assembly.tongue.open();
-    wait(850, msec); // time for tongue to intake blocks
+    wait(1000, msec); // time for tongue to intake blocks
     chassis.wait();
 
     // drive to middle goal and score
