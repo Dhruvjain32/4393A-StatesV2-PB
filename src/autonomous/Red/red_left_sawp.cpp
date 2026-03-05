@@ -26,13 +26,14 @@ std::string red_left_sawp(bool calibrate, mik::auto_variation var, bool get_name
     assembly.tongue.close();
     wait(150, msec);
     assembly.locking.open();
-    wait(700, msec);
+    wait(800, msec); // try adjusting this time...
     chassis.wait();
 
     // drive out of goal
     chassis.drive_distance(10, {.max_voltage = 12, .timeout = 600, .wait = false });
+        chassis.wait();
     assembly.locking.close();
-    chassis.wait();
+
     chassis.turn_to_angle(45, {.timeout = 700});
 
     // drive to set of three blocks and intake them
@@ -56,7 +57,7 @@ std::string red_left_sawp(bool calibrate, mik::auto_variation var, bool get_name
     chassis.wait();
 
     // drive to point between matchloader and goal
-    chassis.drive_to_point(-45.5, 47.5, {.max_voltage = 12});
+    chassis.drive_to_point(-45.5, 47, {.max_voltage = 10});
 
     // turn to face matchloader
     chassis.turn_to_angle(270, {.timeout = 600});
@@ -65,7 +66,7 @@ std::string red_left_sawp(bool calibrate, mik::auto_variation var, bool get_name
     chassis.drive_distance(-30, {.max_voltage = 12, .timeout = 1500, .wait = false});
     wait(450, msec);
     assembly.locking.open();
-    wait(550, msec);
+    wait(650, msec);
     chassis.wait();
     assembly.highGoal.open();
 
@@ -78,7 +79,7 @@ std::string red_left_sawp(bool calibrate, mik::auto_variation var, bool get_name
     chassis.wait();
 
     // drive to middle goal and score
-    chassis.drive_to_point(-6.5, 12.3, {.wait = false, .max_voltage = 12});
+    chassis.drive_to_point(-8, 12, {.wait = false, .max_voltage = 12});
     
     
     assembly.highGoal.close();
@@ -90,7 +91,7 @@ std::string red_left_sawp(bool calibrate, mik::auto_variation var, bool get_name
     chassis.wait();
 
     assembly.locking.open();
-    intake();
+    intake(12, 8);
     wait(1000, msec);
 
     return "";
