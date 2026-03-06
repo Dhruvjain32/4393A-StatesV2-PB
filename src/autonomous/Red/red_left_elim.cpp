@@ -24,24 +24,26 @@ std::string red_left_elim(bool calibrate, mik::auto_variation var, bool get_name
     assembly.tongue.close();
     chassis.wait();
 
-    chassis.drive_to_point(-6, 45, {.max_voltage = 5});
+    chassis.drive_to_point(-6.5, 45, {.max_voltage = 5});
 
-    chassis.drive_to_point(-24.88, 24.11, { .max_voltage = 10 });
+    chassis.drive_to_point(-24, 24, { .max_voltage = 10 });
     chassis.turn_to_angle(315);
-    chassis.drive_to_point(-48, 49, { .max_voltage = 10 });
+    chassis.drive_to_point(-45, 47.5, { .max_voltage = 10 });
     chassis.turn_to_angle(270);
+    
+    
     assembly.tongue.open();
-    
-    
-    chassis.drive_to_point(-64.52, 49, { .max_voltage = 10, .timeout = 1300}); // timeout is time to get both matchloader and blocks
-    chassis.drive_to_point(-28, chassis.get_Y_position(), { .wait = false, .max_voltage = 10, .timeout = 2500 });
+    chassis.drive_to_point(-64.52, 47.5, { .max_voltage = 10, .timeout = 1000});
+    chassis.drive_distance(-46, { .wait = false, .max_voltage = 10, .timeout = 2500 });
     wait(400, msec);
     assembly.tongue.close();
-    wait(150, msec);
+    wait(350, msec);
     assembly.locking.open();
-    wait(1000, msec);
+    wait(2000, msec);
     chassis.wait();
-    chassis.drive_distance(-5);
+    chassis.drive_distance(4);
+    assembly.locking.close();
+    chassis.drive_distance(-8);
 
     
     return "";
